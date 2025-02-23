@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seguimiento de Asistencia</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Seguimiento de Alumnos</h1>
+        <table id="attendance-table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Asistencias</th>
+                    <th>Faltas</th>
+                    <th>Trabajos Prácticos</th>
+                    <th>Evaluaciones</th>
+                    <th>Estado de Asistencia</th>
+                    <th>Observaciones</th>
+                    <th>Acción</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody id="student-list">
+                <!-- Lista de alumnos aquí -->
+            </tbody>
+        </table>
+        <button id="add-student">Agregar Alumno</button>
+        <button id="undo-action">Deshacer Acción</button>
+    </div>
+    <script src="alumnos.js"></script>
+</body>
+</html>

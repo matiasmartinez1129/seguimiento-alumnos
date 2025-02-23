@@ -1,0 +1,131 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+/* Estilos de la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background: white;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+/* Contenedor de notas en trabajos prácticos */
+.practicals-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* Cambiar a 1 columna por defecto */
+    gap: 5px;
+    align-items: center;
+}
+
+/* Input de notas */
+.practical-input {
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Botón de agregar nota */
+.add-note {
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.add-note:hover {
+    background-color: #1976D2;
+}
+
+/* Botones generales */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Estilos para los botones en la columna de Acción */
+td button {
+    margin: 5px;
+}
+
+/* Estilos específicos para la columna de acción */
+td:nth-child(8) button {
+    width: 100px; /* Ancho fijo para los botones de Acción */
+}
+
+/* Estilos para la columna de Eliminar */
+td:nth-child(9) button {
+    background-color: #F44336;
+}
+
+td:nth-child(9) button:hover {
+    background-color: #D32F2F;
+}
+
+/* Responsive para pantallas móviles */
+@media (max-width: 768px) {
+    .practicals-container {
+        grid-template-columns: 1fr; /* Solo una columna en móviles */
+    }
+
+    td, th {
+        font-size: 12px; /* Reducir tamaño de texto en pantallas pequeñas */
+    }
+
+    button {
+        font-size: 12px; /* Reducir tamaño de los botones en pantallas pequeñas */
+    }
+    .container {
+        overflow-x: auto;
+    }
+}
+
+/* Desktop: Ajuste para asegurar que los inputs no se rompan */
+@media (min-width: 769px) {
+    .practicals-container {
+        grid-template-columns: repeat(2, 1fr); /* Dos columnas para desktop */
+    }
+    
+}
