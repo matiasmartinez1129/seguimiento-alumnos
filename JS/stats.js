@@ -1,13 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
     const studentStatsModal = document.getElementById("student-stats-modal");
     const closeModalBtn = document.getElementById("close-modal");
-    const searchStudentInput = document.getElementById("search-student-modal"); // Cambié el id aquí
+    const searchStudentInput = document.getElementById("search-student-modal");
     const studentLinksContainer = document.getElementById("student-links-container");
     const studentStatsContainer = document.getElementById("student-stats-container");
+    const openModalBtn = document.getElementById("show-stats-modal");
+
+    // Asegurar que el modal esté oculto al cargar la página
+    studentStatsModal.style.display = "none";
 
     // Función para calcular el porcentaje de asistencia
     function calculateAttendancePercentage(student) {
-        const totalClasses = 36; // Número total de clases
+        const totalClasses = 36;
         return student.attendance && totalClasses > 0 ? ((student.attendance / totalClasses) * 100).toFixed(2) : 0;
     }
 
@@ -44,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Función para renderizar la lista de alumnos filtrados
     function renderStudentLinks(students) {
-        studentLinksContainer.innerHTML = ''; // Limpiar los resultados anteriores
+        studentLinksContainer.innerHTML = '';
 
         students.forEach((student) => {
             const li = document.createElement("li");
@@ -63,10 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const query = searchStudentInput.value.toLowerCase();
         const students = JSON.parse(localStorage.getItem("students")) || [];
 
-        if (students.length === 0) {
-            alert("No hay estudiantes disponibles.");
-            return;
-        }
+        if (students.length === 0) return; // No mostrar alerta, solo no renderizar nada
 
         // Filtrar alumnos por nombre
         const filteredStudents = students.filter(student =>
@@ -76,12 +77,12 @@ document.addEventListener("DOMContentLoaded", () => {
         renderStudentLinks(filteredStudents);
     });
 
-    // Función para abrir el modal
-    document.getElementById("show-stats-modal").addEventListener("click", () => {
+    // Evento para abrir el modal cuando se haga clic en el botón
+    openModalBtn.addEventListener("click", () => {
         studentStatsModal.style.display = "block";
     });
 
-    // Función para cerrar el modal
+    // Evento para cerrar el modal al hacer clic en el botón de cierre
     closeModalBtn.addEventListener("click", () => {
         studentStatsModal.style.display = "none";
     });
