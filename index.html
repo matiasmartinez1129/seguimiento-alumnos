@@ -8,7 +8,21 @@
 </head>
 <body>
     <div class="container">
-        <h1>Seguimiento de Alumnos</h1>
+        <div class="header">
+            <h1>Seguimiento de Alumnos</h1>
+            <h2>Ciclo Lectivo: 2025</h2>
+        </div>
+
+        <div class="filter-container">
+            <input type="text" id="search-student" placeholder="Buscar alumno...">
+            <select id="filter-status">
+                <option value="all">Todos</option>
+                <option value="Aprobado">Aprobado</option>
+                <option value="En proceso">En proceso</option>
+                <option value="Reprobado">Reprobado</option>
+            </select>
+        </div>
+
         <table id="attendance-table">
             <thead>
                 <tr>
@@ -27,9 +41,37 @@
                 <!-- Lista de alumnos aquí -->
             </tbody>
         </table>
+
+
+
+        <!-- Botones debajo de la tabla -->
         <button id="add-student">Agregar Alumno</button>
         <button id="undo-action">Deshacer Acción</button>
+       <!-- Botón para abrir el modal de estadísticas -->
+<button id="show-stats-modal">Estadísticas</button>
+
+<!-- Modal de estadísticas -->
+<div id="student-stats-modal" class="modal">
+    <div class="modal-content">
+        <span id="close-modal" class="close">&times;</span>
+        <h3>Estadísticas del Alumno</h3>
+
+        <!-- Buscador de alumnos -->
+        <input type="text" id="search-student-modal" placeholder="Buscar alumno..." />
+        <ul id="student-links-container"></ul> <!-- Lista de alumnos filtrados -->
+
+        <div id="student-stats-container"></div> <!-- Aquí se mostrarán las estadísticas del alumno -->
     </div>
-    <script src="alumnos.js"></script>
+</div>
+
+
+
+
+        
+    </div>
+
+    <script src="JS/alumnos.js"></script>
+    <script src="JS/filter.js"></script>
+    <script src="JS/stats.js"></script> <!-- Enlace al archivo de estadísticas -->
 </body>
 </html>

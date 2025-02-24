@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
             students.push(newStudent);
             saveToLocalStorage();
             renderTable();
+            updateStats();  // Actualizamos las estadísticas
         }
     }
 
@@ -57,6 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             saveToLocalStorage();
             renderTable();
+            updateStats();  // Actualizamos las estadísticas
         } else {
             alert("Este alumno ya ha completado las 36 clases.");
         }
@@ -99,6 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             saveToLocalStorage();
             renderTable();
+            updateStats();  // Actualizamos las estadísticas
         } else {
             alert("No hay acciones para deshacer.");
         }
@@ -118,12 +121,14 @@ document.addEventListener("DOMContentLoaded", () => {
             students.splice(index, 1);
             saveToLocalStorage();
             renderTable();
+            updateStats();  // Actualizamos las estadísticas
         }
     }
 
     function updateEditableFields(index, field, value) {
         students[index][field] = isNaN(value) ? value : Number(value);
         saveToLocalStorage();
+        updateStats();  // Actualizamos las estadísticas
     }
 
     function addPractical(index) {
@@ -139,6 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
         students[index].practicals.push(newPractical);
         saveToLocalStorage();
         renderTable();
+        updateStats();  // Actualizamos las estadísticas
     }
 
     function addEvaluation(index) {
@@ -154,6 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
         students[index].evaluations.push(newEvaluation);
         saveToLocalStorage();
         renderTable();
+        updateStats();  // Actualizamos las estadísticas
     }
 
     function updatePracticals(index, subIndex, field, value) {
@@ -172,6 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         saveToLocalStorage();
+        updateStats();  // Actualizamos las estadísticas
     }
 
     function updateEvaluations(index, subIndex, field, value) {
@@ -190,6 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         saveToLocalStorage();
+        updateStats();  // Actualizamos las estadísticas
     }
 
     function renderTable() {

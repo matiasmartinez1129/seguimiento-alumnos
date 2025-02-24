@@ -16,9 +16,9 @@ body {
     border-radius: 8px;
 }
 
-h1 {
+.header {
     text-align: center;
-    color: #333;
+    margin-bottom: 20px;
 }
 
 /* Estilos de la tabla */
@@ -27,6 +27,8 @@ table {
     border-collapse: collapse;
     margin-bottom: 20px;
     background: white;
+    overflow-x: auto; /* Permite desplazamiento horizontal en pantallas pequeñas */
+    display: block; /* Evita que la tabla se rompa */
 }
 
 th, td {
@@ -104,28 +106,215 @@ td:nth-child(9) button:hover {
     background-color: #D32F2F;
 }
 
+/* Estilos para los inputs de búsqueda y filtro */
+#search-student, #filter-status {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #4CAF50;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+#search-student:focus, #filter-status:focus {
+    border-color: #2E8B57;
+    box-shadow: 0 0 8px rgba(46, 139, 87, 0.6);
+}
+
+#filter-status {
+    cursor: pointer;
+    background-color: #fff;
+}
+
+#search-student::placeholder {
+    color: #888;
+}
+
+/* Contenedor para organizar los filtros */
+.filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+/* Estilo general del modal */
+.modal {
+    display: none; /* Inicialmente escondido */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Fondo semi-transparente */
+    z-index: 999;
+    align-items: center;  /* Centramos verticalmente */
+    justify-content: center;  /* Centramos horizontalmente */
+    padding: 20px;
+    display: flex; /* Usamos flexbox para centrar */
+}
+
+/* Contenido del modal */
+.modal-content {
+    background: #fff;
+    border-radius: 10px;
+    max-width: 700px;
+    width: 90%; /* Aseguramos que el modal se ajuste en pantallas pequeñas */
+    padding: 20px;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease-in-out; /* Animación suave al abrir */
+}
+
+/* Animación de aparición */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Estilo del título */
+.modal-content h3 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Estilo del botón de cierre */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    color: #888;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+/* Hover en el botón de cierre */
+.close:hover {
+    color: #333;
+}
+
+/* Estilo del buscador de alumnos */
+#search-student-modal {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* Estilo de la lista de alumnos */
+#student-links-container {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+#student-links-container li {
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Hover en los elementos de la lista de alumnos */
+#student-links-container li:hover {
+    background-color: #e0e0e0;
+}
+
+/* Estilo del contenedor de estadísticas */
+#student-stats-container {
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#student-stats-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+#student-stats-container li {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+#student-stats-container li strong {
+    color: #555;
+}
+
 /* Responsive para pantallas móviles */
+@media (max-width: 9999px){
+  .filter-container{
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  #search-student, #filter-status{ 
+    width: 200px;
+  
+  }
+}
 @media (max-width: 768px) {
+    /* Filtros y búsqueda */
+    #search-student, #filter-status {
+        width: 100%; /* Hacer que los filtros ocupen todo el ancho */
+        font-size: 14px; /* Ajustar el tamaño de texto */
+    }
+
+    /* Modificar la tabla */
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    th, td {
+        font-size: 12px; /* Reducir tamaño de texto en pantallas pequeñas */
+    }
+
     .practicals-container {
         grid-template-columns: 1fr; /* Solo una columna en móviles */
     }
 
-    td, th {
-        font-size: 12px; /* Reducir tamaño de texto en pantallas pequeñas */
+    /* Ajustes en el modal */
+    .modal-content {
+        width: 90%; /* Modal más pequeño */
+        padding: 15px;
     }
 
+    /* Botones y entradas más grandes */
     button {
-        font-size: 12px; /* Reducir tamaño de los botones en pantallas pequeñas */
+        font-size: 12px;
     }
+    
+    /* Ajustes en el contenedor principal */
     .container {
-        overflow-x: auto;
+        padding: 15px; /* Reducir padding en móviles */
     }
 }
 
-/* Desktop: Ajuste para asegurar que los inputs no se rompan */
 @media (min-width: 769px) {
+    /* Pantallas de escritorio */
     .practicals-container {
         grid-template-columns: repeat(2, 1fr); /* Dos columnas para desktop */
     }
-    
 }
