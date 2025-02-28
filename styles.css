@@ -261,6 +261,177 @@ td:nth-child(9) button:hover {
     color: #555;
 }
 
+<<<<<<< HEAD
+=======
+
+/*ESTILOS A CREAR PLANILLAS*/
+/* Estilo de los contenedores */
+.planilla-container, .filter-container {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.planilla-container label, .filter-container input, .filter-container select {
+    font-size: 1rem;
+    margin-right: 10px;
+}
+
+#planilla-select, #search-student, #filter-status {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: white;
+    width: 220px;
+    transition: border-color 0.3s ease;
+}
+
+#planilla-select:focus, #search-student:focus, #filter-status:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* Botón de crear nueva planilla */
+#crear-planilla {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#crear-planilla:hover {
+    background-color: #45a049;
+}
+
+#eliminar-planilla {
+    background-color: #D32F2F;
+}
+
+/* Estilo para los inputs dentro de la tabla */
+.input-table {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+}
+
+/* Estilo para los botones */
+.btn-save {
+    padding: 8px 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-save:hover {
+    background-color: #45a049;
+}
+
+/* Asegurarse que los botones dentro de las filas de las evaluaciones y trabajos tengan un estilo consistente */
+#practical-form-${studentIndex} td,
+#evaluation-form-${studentIndex} td {
+    background-color: #f9f9f9;
+}
+
+#practical-form-${studentIndex} td button,
+#evaluation-form-${studentIndex} td button {
+    padding: 6px 10px;
+    font-size: 14px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#practical-form-${studentIndex} td button:hover,
+#evaluation-form-${studentIndex} td button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo para la fila de encabezado */
+thead th {
+    background-color: #333;
+    color: white;
+}
+
+
+
+/* Estilos generales para la planilla */
+.planilla-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.planilla-container label {
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+#planilla-select {
+    width: 50%;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+}
+
+/* Estilos para los botones */
+.button-container {
+    display: flex;
+    gap: 10px; /* Espacio entre los botones */
+    width: 100%;
+    justify-content: flex-start; /* Alinea los botones a la izquierda */
+}
+
+#crear-planilla, #eliminar-planilla {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+#crear-planilla:hover, #eliminar-planilla:hover {
+    background-color: #45a049;
+}
+
+#eliminar-planilla {
+    background-color: #F44336;
+}
+
+#eliminar-planilla:hover {
+    background-color: #D32F2F;
+}
+
+
+
+>>>>>>> 27d19d3 (sistema alumnos front finish)
 /* Responsive para pantallas móviles */
 @media (max-width: 9999px){
   .filter-container{
@@ -310,6 +481,44 @@ td:nth-child(9) button:hover {
     .container {
         padding: 15px; /* Reducir padding en móviles */
     }
+<<<<<<< HEAD
+=======
+
+
+    .planilla-container {
+        padding: 15px;
+        width: 80%;
+    }
+
+    /* El select ocupa todo el ancho */
+    #planilla-select {
+        width: 90%;
+    }
+
+    /* Los botones deben ocupar el 100% del ancho, en vez de estar alineados a la izquierda */
+    .button-container {
+        flex-direction: column; /* Coloca los botones en una columna */
+        align-items: center; /* Centra los botones */
+        width: 100%;
+    }
+
+    #crear-planilla, #eliminar-planilla {
+        width: 80%; /* Los botones ocupan todo el ancho */
+        margin-bottom: 10px; /* Añade espacio entre los botones */
+    }
+
+    /* Etiquetas y selectores más pequeños */
+    .planilla-container label {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+
+    #planilla-select {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+>>>>>>> 27d19d3 (sistema alumnos front finish)
 }
 
 @media (min-width: 769px) {
@@ -317,4 +526,18 @@ td:nth-child(9) button:hover {
     .practicals-container {
         grid-template-columns: repeat(2, 1fr); /* Dos columnas para desktop */
     }
+<<<<<<< HEAD
+=======
+
+    /* En pantallas grandes, se alinean los botones horizontalmente */
+    .button-container {
+        flex-direction: row; /* Alineación horizontal */
+        justify-content: flex-start; /* Alineación a la izquierda */
+    }
+
+    #crear-planilla, #eliminar-planilla {
+        width: auto; /* Los botones no ocupan todo el ancho */
+        margin-bottom: 0; /* Elimina el espacio inferior entre los botones */
+    }
+>>>>>>> 27d19d3 (sistema alumnos front finish)
 }

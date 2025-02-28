@@ -13,6 +13,21 @@
             <h2>Ciclo Lectivo: 2025</h2>
         </div>
 
+<<<<<<< HEAD
+=======
+        <!-- Selección y creación de planillas -->
+        <div class="planilla-container">
+            <label for="planilla-select">Seleccionar Planilla:</label>
+            <select id="planilla-select">
+                <option value="">Selecciona una planilla</option>
+            </select>
+            <button id="crear-planilla">Crear Nueva Planilla</button> <!-- Cambio aquí -->
+            <button id="eliminar-planilla">Eliminar Planilla</button>
+        </div>
+        
+
+        <!-- Filtros -->
+>>>>>>> 27d19d3 (sistema alumnos front finish)
         <div class="filter-container">
             <input type="text" id="search-student" placeholder="Buscar alumno...">
             <select id="filter-status">
@@ -23,6 +38,10 @@
             </select>
         </div>
 
+<<<<<<< HEAD
+=======
+        <!-- Tabla de alumnos -->
+>>>>>>> 27d19d3 (sistema alumnos front finish)
         <table id="attendance-table">
             <thead>
                 <tr>
@@ -30,7 +49,13 @@
                     <th>Asistencias</th>
                     <th>Faltas</th>
                     <th>Trabajos Prácticos</th>
+<<<<<<< HEAD
                     <th>Evaluaciones</th>
+=======
+                    
+                    <th>Evaluaciones</th>
+                    
+>>>>>>> 27d19d3 (sistema alumnos front finish)
                     <th>Estado de Asistencia</th>
                     <th>Observaciones</th>
                     <th>Acción</th>
@@ -42,6 +67,7 @@
             </tbody>
         </table>
 
+<<<<<<< HEAD
 
 
         <!-- Botones debajo de la tabla -->
@@ -73,5 +99,29 @@
     <script src="JS/alumnos.js"></script>
     <script src="JS/filter.js"></script>
     <script src="JS/stats.js"></script> <!-- Enlace al archivo de estadísticas -->
+=======
+        <!-- Botones -->
+        <button id="add-student">Agregar Alumno</button>
+        <button id="undo-action">Deshacer Acción</button>
+        <button id="show-stats-modal">Estadísticas</button>
+
+        <!-- Modal de estadísticas -->
+        <div id="student-stats-modal" class="modal">
+            <div class="modal-content">
+                <span id="close-modal" class="close">&times;</span>
+                <h3>Estadísticas del Alumno</h3>
+                <input type="text" id="search-student-modal" placeholder="Buscar alumno..." />
+                <ul id="student-links-container"></ul>
+                <div id="student-stats-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="JS/alumnos.js" defer></script>
+    <script src="JS/planillas.js" defer></script>
+    <script src="JS/filter.js"></script>
+    <script src="JS/stats.js"></script>
+>>>>>>> 27d19d3 (sistema alumnos front finish)
 </body>
 </html>

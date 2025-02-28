@@ -2,17 +2,109 @@ document.addEventListener("DOMContentLoaded", () => {
     const studentList = document.getElementById("student-list");
     const addStudentButton = document.getElementById("add-student");
     const undoButton = document.getElementById("undo-action");
+<<<<<<< HEAD
 
     let students = JSON.parse(localStorage.getItem("students")) || [];
+=======
+    const planillaSelect = document.getElementById("planilla-select");
+
+    let students = [];
+>>>>>>> 27d19d3 (sistema alumnos front finish)
     let actionHistory = [];
 
     const TOTAL_CLASSES = 36;
 
+<<<<<<< HEAD
     function saveToLocalStorage() {
         localStorage.setItem("students", JSON.stringify(students));
     }
 
     function addStudent() {
+=======
+    // Función para obtener la planilla actual seleccionada
+    function getCurrentPlanilla() {
+        return planillaSelect.value;
+    }
+
+    // Función para cargar los estudiantes de la planilla seleccionada
+    // Limpiar los estudiantes antes de cargar los nuevos
+function loadStudents() {
+    const planilla = getCurrentPlanilla();
+    if (!planilla) {
+        return; // Si no hay planilla seleccionada, no hacer nada
+    }
+
+    // Limpiar estudiantes antes de cargar los nuevos datos.
+    students = [];
+
+    // Verificar si existe la clave para esa planilla en localStorage
+    const storedData = localStorage.getItem(planilla);
+    if (storedData) {
+        students = JSON.parse(storedData);
+    }
+
+    console.log("Datos cargados desde localStorage:", students);
+
+    // Asegurarse de que los objetos de los estudiantes están correctamente inicializados
+    students.forEach((student, idx) => {
+        if (!student) {
+            console.warn(`Error: estudiante en índice ${idx} es undefined.`);
+        }
+        student.practicals = student.practicals || [];
+        student.evaluations = student.evaluations || [];
+    });
+
+    renderTable(); // Asegúrate de renderizar con los datos correctos.
+}
+
+
+    
+    // Escuchar cambios en la selección de planilla
+planillaSelect.addEventListener("change", () => {
+    students = []; // Limpiar la lista de estudiantes al cambiar de planilla
+    loadStudents(); // Cargar los estudiantes de la nueva planilla
+});
+
+
+    // Función para guardar los estudiantes en localStorage
+function saveToLocalStorage() {
+    const planilla = getCurrentPlanilla();
+    if (planilla) {
+        // Asegúrate de que los datos de la planilla estén guardados correctamente
+        localStorage.setItem(planilla, JSON.stringify(students));
+    }
+}
+
+
+    // Función para actualizar los trabajos prácticos
+    function updatePracticals(index, subIndex, field, value) {
+        const student = students[index];
+        const practical = student.practicals[subIndex];
+        const previousValue = practical[field];
+
+        practical[field] = value;
+
+        actionHistory.push({
+            type: "updatePractical",
+            index,
+            subIndex,
+            field,
+            previousValue
+        });
+
+        saveToLocalStorage();
+        updateStats();
+    }
+
+    // Función para agregar un nuevo estudiante
+    function addStudent() {
+        const planilla = getCurrentPlanilla();
+        if (!planilla) {
+            alert("Debes seleccionar o crear una planilla antes de agregar alumnos.");
+            return;
+        }
+    
+>>>>>>> 27d19d3 (sistema alumnos front finish)
         const studentName = prompt("Ingrese el nombre del alumno:");
         if (studentName) {
             const newStudent = {
@@ -24,6 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 observations: "",
                 status: "Aprobado"
             };
+<<<<<<< HEAD
 
             // Guardamos la acción en el historial para deshacerla
             actionHistory.push({ type: "add", student: newStudent });
@@ -35,6 +128,22 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+=======
+    
+            // Agregar el estudiante a la planilla seleccionada
+            students.push(newStudent);
+            actionHistory.push({ type: "add", student: newStudent });
+    
+            // Guardar en localStorage solo los estudiantes de la planilla seleccionada
+            saveToLocalStorage();
+    
+            renderTable();  // Renderizamos la tabla actualizada
+        }
+    }
+    
+
+    // Función para actualizar la asistencia de un estudiante
+>>>>>>> 27d19d3 (sistema alumnos front finish)
     function updateAttendance(index, isPresent) {
         const student = students[index];
         if (student.attendance + student.absences < TOTAL_CLASSES) {
@@ -64,6 +173,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+<<<<<<< HEAD
+=======
+    // Función para deshacer la última acción
+>>>>>>> 27d19d3 (sistema alumnos front finish)
     function undoLastAction() {
         if (actionHistory.length > 0) {
             const lastAction = actionHistory.pop();
@@ -107,6 +220,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+<<<<<<< HEAD
+=======
+    // Función para eliminar un estudiante
+>>>>>>> 27d19d3 (sistema alumnos front finish)
     function deleteStudent(index) {
         if (confirm("¿Estás seguro de que deseas eliminar este alumno?")) {
             const deletedStudent = students[index];
@@ -125,16 +242,36 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+<<<<<<< HEAD
+=======
+    // Función para actualizar los campos editables
+>>>>>>> 27d19d3 (sistema alumnos front finish)
     function updateEditableFields(index, field, value) {
         students[index][field] = isNaN(value) ? value : Number(value);
         saveToLocalStorage();
         updateStats();  // Actualizamos las estadísticas
     }
 
+<<<<<<< HEAD
     function addPractical(index) {
         const newPractical = { name: "", date: "", grade: "" };
 
         // Guardamos la acción en el historial
+=======
+    // Función para agregar un trabajo práctico a un estudiante
+    function addPractical(index) {
+        if (!students[index]) {
+            console.error(`Error: No existe el estudiante en la posición ${index}`);
+            return;
+        }
+
+        if (!students[index].practicals) {
+            students[index].practicals = []; // Asegurar que la propiedad existe
+        }
+
+        const newPractical = { name: "", date: "", grade: "" };
+
+>>>>>>> 27d19d3 (sistema alumnos front finish)
         actionHistory.push({
             type: "addPractical",
             index,
@@ -144,6 +281,7 @@ document.addEventListener("DOMContentLoaded", () => {
         students[index].practicals.push(newPractical);
         saveToLocalStorage();
         renderTable();
+<<<<<<< HEAD
         updateStats();  // Actualizamos las estadísticas
     }
 
@@ -151,6 +289,24 @@ document.addEventListener("DOMContentLoaded", () => {
         const newEvaluation = { name: "", date: "", grade: "" };
 
         // Guardamos la acción en el historial
+=======
+        updateStats();
+    }
+
+    // Función para agregar una evaluación a un estudiante
+    function addEvaluation(index) {
+        if (!students[index]) {
+            console.error(`Error: No existe el estudiante en la posición ${index}`);
+            return;
+        }
+
+        if (!students[index].evaluations) {
+            students[index].evaluations = []; // Asegurar que la propiedad existe
+        }
+
+        const newEvaluation = { name: "", date: "", grade: "" };
+
+>>>>>>> 27d19d3 (sistema alumnos front finish)
         actionHistory.push({
             type: "addEvaluation",
             index,
@@ -160,6 +316,7 @@ document.addEventListener("DOMContentLoaded", () => {
         students[index].evaluations.push(newEvaluation);
         saveToLocalStorage();
         renderTable();
+<<<<<<< HEAD
         updateStats();  // Actualizamos las estadísticas
     }
 
@@ -182,6 +339,12 @@ document.addEventListener("DOMContentLoaded", () => {
         updateStats();  // Actualizamos las estadísticas
     }
 
+=======
+        updateStats();
+    }
+
+    // Función para actualizar las evaluaciones de un estudiante
+>>>>>>> 27d19d3 (sistema alumnos front finish)
     function updateEvaluations(index, subIndex, field, value) {
         const student = students[index];
         const evaluation = student.evaluations[subIndex];
@@ -201,10 +364,15 @@ document.addEventListener("DOMContentLoaded", () => {
         updateStats();  // Actualizamos las estadísticas
     }
 
+<<<<<<< HEAD
+=======
+    // Función para renderizar la tabla de estudiantes
+>>>>>>> 27d19d3 (sistema alumnos front finish)
     function renderTable() {
         studentList.innerHTML = "";
 
         students.forEach((student, index) => {
+<<<<<<< HEAD
             let practicalInputs = student.practicals.map((practical, subIndex) => `
                 <div>
                     <input type="text" placeholder="Nombre" value="${practical.name}" onchange="updatePracticals(${index}, ${subIndex}, 'name', this.value)">
@@ -225,6 +393,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
             row.innerHTML = `
                 <td>${student.name}</td>
+=======
+            let practicalInputs = student.practicals.map((practical, subIndex) => 
+                `<div>
+                    <input type="text" placeholder="Nombre" value="${practical.name}" onchange="updatePracticals(${index}, ${subIndex}, 'name', this.value)">
+                    <input type="date" value="${practical.date}" onchange="updatePracticals(${index}, ${subIndex}, 'date', this.value)">
+                    <input type="number" placeholder="Nota" value="${practical.grade}" onchange="updatePracticals(${index}, ${subIndex}, 'grade', this.value)">
+                </div>`
+            ).join("");
+
+            let evaluationInputs = student.evaluations.map((evaluation, subIndex) => 
+                `<div>
+                    <input type="text" placeholder="Nombre de la evaluación" value="${evaluation.name}" onchange="updateEvaluations(${index}, ${subIndex}, 'name', this.value)">
+                    <input type="date" value="${evaluation.date}" onchange="updateEvaluations(${index}, ${subIndex}, 'date', this.value)">
+                    <input type="number" placeholder="Nota" value="${evaluation.grade}" onchange="updateEvaluations(${index}, ${subIndex}, 'grade', this.value)">
+                </div>`
+            ).join("");
+
+            const row = document.createElement("tr");
+
+            row.innerHTML = 
+                `<td>${student.name}</td>
+>>>>>>> 27d19d3 (sistema alumnos front finish)
                 <td>${student.attendance}</td>
                 <td>${student.absences}</td>
                 <td>
@@ -243,8 +433,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 </td>
                 <td>
                     <button class="delete" onclick="deleteStudent(${index})">Eliminar</button>
+<<<<<<< HEAD
                 </td>
             `;
+=======
+                </td>`;
+>>>>>>> 27d19d3 (sistema alumnos front finish)
 
             studentList.appendChild(row);
         });
@@ -257,9 +451,17 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+<<<<<<< HEAD
     addStudentButton.addEventListener("click", addStudent);
     undoButton.addEventListener("click", undoLastAction);
 
+=======
+    // Eventos de agregar estudiante y deshacer
+    addStudentButton.addEventListener("click", addStudent);
+    undoButton.addEventListener("click", undoLastAction);
+
+    // Hacer que las funciones sean accesibles desde el HTML
+>>>>>>> 27d19d3 (sistema alumnos front finish)
     window.updateAttendance = updateAttendance;
     window.deleteStudent = deleteStudent;
     window.updateEditableFields = updateEditableFields;
@@ -268,5 +470,10 @@ document.addEventListener("DOMContentLoaded", () => {
     window.updatePracticals = updatePracticals;
     window.updateEvaluations = updateEvaluations;
 
+<<<<<<< HEAD
+=======
+    // Inicializar los datos al cargar la página
+    loadStudents();
+>>>>>>> 27d19d3 (sistema alumnos front finish)
     renderTable();
 });
