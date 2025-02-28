@@ -6,11 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const studentStatsContainer = document.getElementById("student-stats-container");
     const openModalBtn = document.getElementById("show-stats-modal");
 
-<<<<<<< HEAD
     // Asegurar que el modal esté oculto al cargar la página
-    studentStatsModal.style.display = "none";
-
-=======
     studentStatsModal.style.display = "none";
 
     function getCurrentPlanilla() {
@@ -23,7 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return planilla ? JSON.parse(localStorage.getItem(planilla)) : [];
     }
 
->>>>>>> 27d19d3 (sistema alumnos front finish)
     // Función para calcular el porcentaje de asistencia
     function calculateAttendancePercentage(student) {
         const totalClasses = 36;
@@ -64,22 +59,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // Función para renderizar la lista de alumnos filtrados
     function renderStudentLinks(students) {
         studentLinksContainer.innerHTML = '';
-<<<<<<< HEAD
-
-=======
->>>>>>> 27d19d3 (sistema alumnos front finish)
         students.forEach((student) => {
             const li = document.createElement("li");
             li.textContent = student.name;
             li.style.cursor = "pointer";
-
-<<<<<<< HEAD
-            // Agregar evento para mostrar las estadísticas al hacer clic en el nombre del alumno
             li.addEventListener("click", () => renderStudentStats(student));
-
-=======
-            li.addEventListener("click", () => renderStudentStats(student));
->>>>>>> 27d19d3 (sistema alumnos front finish)
             studentLinksContainer.appendChild(li);
         });
     }
@@ -87,18 +71,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // Función para filtrar y mostrar los alumnos según el texto de búsqueda
     searchStudentInput.addEventListener("input", () => {
         const query = searchStudentInput.value.toLowerCase();
-<<<<<<< HEAD
-        const students = JSON.parse(localStorage.getItem("students")) || [];
-
-        if (students.length === 0) return; // No mostrar alerta, solo no renderizar nada
-
-        // Filtrar alumnos por nombre
-=======
         const students = getStudentsFromPlanilla();
 
         if (students.length === 0) return; 
 
->>>>>>> 27d19d3 (sistema alumnos front finish)
         const filteredStudents = students.filter(student =>
             student.name.toLowerCase().includes(query)
         );
@@ -106,28 +82,18 @@ document.addEventListener("DOMContentLoaded", () => {
         renderStudentLinks(filteredStudents);
     });
 
-<<<<<<< HEAD
     // Evento para abrir el modal cuando se haga clic en el botón
-    openModalBtn.addEventListener("click", () => {
-        studentStatsModal.style.display = "block";
-    });
-
-    // Evento para cerrar el modal al hacer clic en el botón de cierre
-=======
     openModalBtn.addEventListener("click", () => {
         studentStatsModal.style.display = "block";
         renderStudentLinks(getStudentsFromPlanilla()); // Carga los estudiantes en el modal
     });
 
->>>>>>> 27d19d3 (sistema alumnos front finish)
+    // Evento para cerrar el modal al hacer clic en el botón de cierre
     closeModalBtn.addEventListener("click", () => {
         studentStatsModal.style.display = "none";
     });
 
-<<<<<<< HEAD
     // Cerrar el modal si se hace clic fuera de él
-=======
->>>>>>> 27d19d3 (sistema alumnos front finish)
     window.addEventListener("click", (event) => {
         if (event.target === studentStatsModal) {
             studentStatsModal.style.display = "none";

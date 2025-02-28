@@ -261,8 +261,8 @@ td:nth-child(9) button:hover {
     color: #555;
 }
 
-<<<<<<< HEAD
-=======
+
+
 
 /*ESTILOS A CREAR PLANILLAS*/
 /* Estilo de los contenedores */
@@ -431,7 +431,6 @@ thead th {
 
 
 
->>>>>>> 27d19d3 (sistema alumnos front finish)
 /* Responsive para pantallas móviles */
 @media (max-width: 9999px){
   .filter-container{
@@ -481,8 +480,7 @@ thead th {
     .container {
         padding: 15px; /* Reducir padding en móviles */
     }
-<<<<<<< HEAD
-=======
+
 
 
     .planilla-container {
@@ -518,7 +516,7 @@ thead th {
         padding: 8px;
     }
 
->>>>>>> 27d19d3 (sistema alumnos front finish)
+
 }
 
 @media (min-width: 769px) {
@@ -526,8 +524,7 @@ thead th {
     .practicals-container {
         grid-template-columns: repeat(2, 1fr); /* Dos columnas para desktop */
     }
-<<<<<<< HEAD
-=======
+
 
     /* En pantallas grandes, se alinean los botones horizontalmente */
     .button-container {
@@ -539,5 +536,5 @@ thead th {
         width: auto; /* Los botones no ocupan todo el ancho */
         margin-bottom: 0; /* Elimina el espacio inferior entre los botones */
     }
->>>>>>> 27d19d3 (sistema alumnos front finish)
+
 }
